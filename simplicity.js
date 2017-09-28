@@ -3,13 +3,12 @@ const { Chromeless } = require('chromeless')
 
 const simplicityUsername = ""
 const simplicityPassword = ""
-
 const chromeLauncher = require('chrome-launcher');
  
 chromeLauncher.launch({
 	  startingUrl: 'https://google.com',
 	  chromeFlags: ['--headless', '--disable-gpu']
-});
+	  }).then (function(chrome){
 
 async function run() {
 	  const chromeless = new Chromeless()
@@ -31,8 +30,10 @@ async function run() {
 	  console.log(html)
 
 	  await chromeless.end()
-}
 
-run().catch(console.error.bind(console))
+	  }
+	  run().then (function(){chrome.kill()}).catch(console.error.bind(console))
+});
+	
 
 

@@ -18,7 +18,7 @@ async function run() {
 	    .type(sharesiesUsername, 'input[type="email"]')
 	    .type(sharesiesPassword, 'input[type="password"]')
 	    .click('button[type="submit"]')
-	    .wait(5000)
+	    .wait(8000)
 	    .html()
 	    .evaluate(function() {
 		var value =  document.querySelector('text.fund-total').innerHTML;

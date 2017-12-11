@@ -8,29 +8,36 @@ const BUTTON_SELECTOR = 'div.ui.page-button > button'
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: true
+    headless: false
   });
-  const page = await browser.newPage();
+  
+  try {
+    const page = await browser.newPage();
 
-  await page.goto('https://app.sharesies.nz/login');
-  await page.click(USERNAME_SELECTOR);
-  await page.keyboard.type(CREDS.username);
+    await page.goto('https://app.sharesies.nz/login');
+    await page.click(USERNAME_SELECTOR);
+    await page.keyboard.type(CREDS.username);
 
-  await page.click(PASSWORD_SELECTOR);
-  await page.keyboard.type(CREDS.password);
+    await page.click(PASSWORD_SELECTOR);
+    await page.keyboard.type(CREDS.password);
 
-  await page.click(BUTTON_SELECTOR);
+    await page.click(BUTTON_SELECTOR);
 
-  await page.waitFor(5*1000);
+    await page.waitFor(5*1000);
 
-  const result = await page.evaluate(() => {
-    let fundtotal = document.querySelector('text.fund-total').innerHTML;
-    return fundtotal
-    });
+    const result = await page.evaluate(() => {
+      let fundtotal = document.querySelector('text.fund-total').innerHTML;
+      return fundtotal
+      });
 
-    console.log(result);
+      console.log(result);
 
-  browser.close();
+    browser.close();
+  }
+
+  catch (e) {
+    browser.close();
+  }
 }
 
 run();

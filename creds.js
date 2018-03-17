@@ -4,5 +4,7 @@ module.exports = {
     simplicityusername: '',
     simplicitypassword: '',
     kiwiwealthusername: '',
-    kiwiwealthpassword: ''
+    kiwiwealthpassword: '',
+    otherusername: '',
+    otherpassword: ''
 }

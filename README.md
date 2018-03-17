@@ -2,7 +2,7 @@
 Simplicity Kiwisaver (https://simplicity.kiwi/) doesn't have an API so I'll get at my own data another way using Google Puppeteer
 
 ## Sharesies-api
-Sharesies (https://www.sharesies.co.nz) don't have an API either, but I need my balance daily, so I'll go get it myself, thanks. 
+Sharesies (https://www.sharesies.co.nz) don't have an API either, but we need our balance every hour for the dashboard and database and tweets of humour (https://twitter.com/spudooli_house, so we'll go get it, thanks. 
 
 ## Kiwiwealth Kiwisaver API
 Kiwibank Kiwiwealth Kiwisaver (phew) doesn't have an API, can you believe, and we need our balance, so we'll go get it ourselves.

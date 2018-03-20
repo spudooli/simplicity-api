@@ -7,7 +7,7 @@ const BUTTON_SELECTOR = '#action-login"]'
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: true
   });
   try {
     const page = await browser.newPage();

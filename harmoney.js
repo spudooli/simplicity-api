@@ -1,13 +1,13 @@
 
 const puppeteer = require('puppeteer');
-const CREDS = require('././creds');
+const CREDS = require('./.creds');
 const USERNAME_SELECTOR = 'label.input.email'
 const PASSWORD_SELECTOR = 'label.input.password'
 const BUTTON_SELECTOR = '.ng-touched.ng-dirty.ng-valid button[type=submit]'
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: true
   });
   try {
     const page = await browser.newPage();

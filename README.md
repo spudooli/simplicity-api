@@ -10,6 +10,9 @@ Kiwibank Kiwiwealth Kiwisaver (phew) doesn't have an API, can you believe, and w
 ## Westpac NZ API
 Westpac NZ also doesn't have an API that allows us to get our balances automatically every 60 minutes for the kitchen Dashboard, so we'll go get them the old fashioned way, by scraping the page
 
+## Harmoney API
+Harmoney, of course, doesn't have an API that allows us to lending balances automatically every 60 minutes for the kitchen Dashboard, so Puppeteer to the rescue again.
+
 ```apt-get install nodejs```
 
 ```npm install puppeteer```

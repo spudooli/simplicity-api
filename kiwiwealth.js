@@ -1,20 +1,19 @@
 
 const puppeteer = require('puppeteer');
-const CREDS = require('./creds');
-const USERNAME_SELECTOR = 'input[type="text"]'
-const PASSWORD_SELECTOR = 'input[type="password"]'
-const BUTTON_SELECTOR = 'input[type="submit"]'
+const CREDS = require('./.86c1ad205367bdb892b6d700f2e89ae2dd980518');
+const USERNAME_SELECTOR = '#email'
+const PASSWORD_SELECTOR = '#password'
+const BUTTON_SELECTOR = 'button'
 
 
 async function run() {
   const browser = await puppeteer.launch({
     headless: true
   });
-  
   try {
     const page = await browser.newPage();
 
-    await page.goto('https://secure.kiwiwealth.co.nz/Login.aspx?');
+    await page.goto('https://app.simplicity.kiwi/login');
     await page.click(USERNAME_SELECTOR);
     await page.keyboard.type(CREDS.kiwiwealthusername);
 
@@ -23,22 +22,22 @@ async function run() {
 
     await page.click(BUTTON_SELECTOR);
 
-    await page.waitFor(15*1000);
+    await page.waitFor(10*1000);
 
     const result = await page.evaluate(() => {
-      let value = document.querySelector('td.value').innerHTML;
+      let value = document.getElementsByTagName('h6')[1].innerText
       return value
       });
 
-    console.log(result);
+      console.log(result);
+      
+          browser.close();
+        }
     
-        browser.close();
-  }
-  
   catch (e) {
     browser.close();
     }
-}
+  }
 
 run();
 

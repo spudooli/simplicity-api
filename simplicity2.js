@@ -1,9 +1,9 @@
 
 const puppeteer = require('puppeteer');
-const CREDS = require('./creds');
-const USERNAME_SELECTOR = '#Username'
-const PASSWORD_SELECTOR = '#Password'
-const BUTTON_SELECTOR = 'input[type="submit"]'
+const CREDS = require('./.86c1ad205367bdb892b6d700f2e89ae2dd980518');
+const USERNAME_SELECTOR = '#email'
+const PASSWORD_SELECTOR = '#password'
+const BUTTON_SELECTOR = 'button'
 
 
 async function run() {
@@ -13,7 +13,7 @@ async function run() {
   try {
     const page = await browser.newPage();
 
-    await page.goto('https://apisimplicity.mmcnz.co.nz/User/LogOn');
+    await page.goto('https://app.simplicity.kiwi/login');
     await page.click(USERNAME_SELECTOR);
     await page.keyboard.type(CREDS.simplicityusername);
 
@@ -22,10 +22,10 @@ async function run() {
 
     await page.click(BUTTON_SELECTOR);
 
-    await page.waitFor(15*1000);
+    await page.waitFor(10*1000);
 
     const result = await page.evaluate(() => {
-      let value = document.querySelector('span.counter').innerHTML;
+      let value = document.getElementsByTagName('h6')[1].innerText
       return value
       });
 

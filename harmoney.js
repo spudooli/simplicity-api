@@ -1,6 +1,6 @@
 
 const puppeteer = require('puppeteer');
-const CREDS = require('./.86c1ad205367bdb892b6d700f2e89ae2dd980518');
+const CREDS = require('./.creds');
 const USERNAME_SELECTOR = 'label.input.email'
 const PASSWORD_SELECTOR = 'label.input.password'
 const BUTTON_SELECTOR = 'body > section > div > hmy-container > hmy-content > hmy-sign-in-form > hmy-embedded-sign-in-form > hmy-sign-in-form > section > form > button'

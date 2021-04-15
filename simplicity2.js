@@ -1,6 +1,6 @@
 
 const puppeteer = require('puppeteer');
-const CREDS = require('creds');
+const CREDS = require('./.86c1ad205367bdb892b6d700f2e89ae2dd980518');
 const USERNAME_SELECTOR = '#email'
 const PASSWORD_SELECTOR = '#password'
 const BUTTON_SELECTOR = 'button'

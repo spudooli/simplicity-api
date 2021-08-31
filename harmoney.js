@@ -1,13 +1,13 @@
 
 const puppeteer = require('puppeteer');
-const CREDS = require('./.creds');
-const USERNAME_SELECTOR = 'label.input.email'
-const PASSWORD_SELECTOR = 'label.input.password'
+const CREDS = require('./creds.js');
+const USERNAME_SELECTOR = 'input[type=email]'
+const PASSWORD_SELECTOR = 'input[type=password]'
 const BUTTON_SELECTOR = 'body > section > div > hmy-container > hmy-content > hmy-sign-in-form > hmy-embedded-sign-in-form > hmy-sign-in-form > section > form > button'
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: true
+    headless: false
   });
   try {
     const page = await browser.newPage();
@@ -20,7 +20,8 @@ async function run() {
 
     await page.click(PASSWORD_SELECTOR);
     await page.keyboard.type(CREDS.harmoneypassword);
-    await page.click(BUTTON_SELECTOR);
+    //await page.click(BUTTON_SELECTOR);
+    await page.keyboard.press('Enter');
 
     await page.waitForNavigation({ waitUntil: 'networkidle0' })
 

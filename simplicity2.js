@@ -5,7 +5,6 @@ const USERNAME_SELECTOR = '#email'
 const PASSWORD_SELECTOR = '#password'
 const BUTTON_SELECTOR = 'button'
 
-
 async function run() {
   const browser = await puppeteer.launch({
     headless: true
@@ -14,18 +13,23 @@ async function run() {
     const page = await browser.newPage();
 
     await page.goto('https://app.simplicity.kiwi/login');
-    await page.click(USERNAME_SELECTOR);
+    await page.keyboard.press('Tab');
+    //await page.click(USERNAME_SELECTOR);
     await page.keyboard.type(CREDS.simplicityusername);
+    await page.keyboard.press('Tab');
 
-    await page.click(PASSWORD_SELECTOR);
+    //await page.click(PASSWORD_SELECTOR);
     await page.keyboard.type(CREDS.simplicitypassword);
 
-    await page.click(BUTTON_SELECTOR);
+    //await page.click(BUTTON_SELECTOR);
+    await page.keyboard.press('Enter');
+    await page.waitForNavigation()
+    await page.waitForSelector('h6')
+    //await page.waitForTimeout(10*1000);
 
-    await page.waitFor(10*1000);
 
     const result = await page.evaluate(() => {
-      let value = document.getElementsByTagName('h6')[1].innerText
+      let value = document.querySelectorAll('h6')[1].innerText
       return value
       });
 
@@ -40,4 +44,3 @@ async function run() {
   }
 
 run();
-
